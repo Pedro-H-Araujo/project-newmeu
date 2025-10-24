@@ -8,11 +8,13 @@ export class QuestionsService {
    @Inject()
    private readonly prisma : PrismaService;
 
-  async create(createQuestionDto: CreateQuestionDto) {
-    const userid = 1; 
+  async create(createQuestionDto: CreateQuestionDto, userId?: number) {
+    const userid = userId ?? 1; // usa 1 como fallback se não for fornecido
     return await this.prisma.questions.create({
       data: {
-        ...createQuestionDto, userid}, 
+        ...createQuestionDto,
+        userid,
+      },
     });
   }
 
