@@ -1,0 +1,14 @@
+import { User } from '../../users/entities/user.entity'; 
+import { Question } from '@/questions/entities/question.entity';
+import { Answers } from '@prisma/client';
+
+export class Answer implements Answers {
+  id: number;
+  body: string;
+  createdAt: Date;
+  updatedAt: Date;
+  questionid: number;
+  userid: number;
+  user: User;
+  question: Question;
+}
